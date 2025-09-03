@@ -1,20 +1,16 @@
 function compareValues(human, computer){
     let response = "";
-    // Check for Rock
     if (human == "rock" && computer == "cooler"){
         response = "Human Won"
         userScore++;
     }
-    // Check for Paper
     else if (human == "paper" && computer == "rock"){
         response = "Human Won"
         userScore++;
     }
-    // Check for Cooler
     else if (human == "cooler" && computer == "paper"){
         response = "Human Won"
         userScore++;
-    // Check for Tie
     } else if(human == computer){
         response = "Tie!"
     }
