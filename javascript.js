@@ -1,34 +1,82 @@
-// This will be a console javscript game.
+function compareValues(human, computer){
+    let response = "";
+    // Check for Rock
+    if (human == "rock" && computer == "cooler"){
+        response = "Human Won"
+        userScore++;
+    }
+    // Check for Paper
+    else if (human == "paper" && computer == "rock"){
+        response = "Human Won"
+        userScore++;
+    }
+    // Check for Cooler
+    else if (human == "cooler" && computer == "paper"){
+        response = "Human Won"
+        userScore++;
+    // Check for Tie
+    } else if(human == computer){
+        response = "Tie!"
+    }
+    else{
+        response = "Computer Won: " + computer
+        computerScore++;
+    }
+    return response
+}
 
-// We will need to get user input, then check if it equals
-// rock paper or cooler. 
 
-
-// Get User Input
-
-// Change it to all lowercase 
-
-// Run switch statement to figure which option, if none
-// default to ask again.
-
-// Function to get computer choice, which relies on switch statement.
 function getComputerChoice()
 {
     let computerChoice = "";
-    value =  Math.floor(Math.random() * 3)
+    let value =  Math.floor(Math.random() * 3)
     switch(value)
         {
         case 0:
-            computerChoice = "Rock";
+            computerChoice = "rock";
             break;
         case 1:
-            computerChoice = "Paper";
+            computerChoice = "paper";
             break;
         case 2:
-            computerChoice = "Cooler";
+            computerChoice = "cooler";
             break;
         }
     return computerChoice;
 }
 
+function cleanInput(str){
+    return str.toLowerCase();
+}
 
+function getHumanChoice()
+{
+    let userInput = prompt("Rock, Paper, or Cooler?");
+    userInput = cleanInput(userInput);
+    return userInput
+}
+
+function playGame(){
+
+let computerChoice = getComputerChoice();
+let humanChoice = getHumanChoice();
+
+let result = compareValues(humanChoice, computerChoice)
+console.log(result)
+
+
+}
+
+let userScore = 0;
+let computerScore = 0;
+
+function printScores(){
+    console.log("Human: " + userScore)
+    console.log("-")
+    console.log("Computer: " + computerScore)
+}
+
+while(computerScore < 5 && userScore < 5){
+    playGame()
+    printScores()
+}
